@@ -14,6 +14,11 @@ The application uses GPS-based location services and the Geoapify Places API to 
 - **Location Services** – Use device location to discover nearby places.
 - **User-Friendly Interface** – Clean and intuitive interface designed for a smooth browsing experience.
 
+## Screenshots
+
+<img width="270" height="600" alt="Screenshot_1794028656" src="https://github.com/user-attachments/assets/aeaaa287-45b9-41f8-acf5-0fae707f1725" />
+<img width="270" height="600" alt="Screenshot_1794028660" src="https://github.com/user-attachments/assets/71b2a3ad-dbbe-4c8c-86df-c96e96c6b844" />
+
 ## 🛠️ Technology Stack
 
 | Technology                       | Purpose                                     |
@@ -152,31 +157,6 @@ The application uses GPS coordinates to search for restaurants within a defined 
 API documentation:
 
 [Geoapify Places API Documentation](https://apidocs.geoapify.com/docs/places/)
-
-## 📦 Generate a Release Build
-
-To generate a signed Android App Bundle (`.aab`) for Google Play Console:
-
-```bash
-cd android
-./gradlew bundleRelease
-```
-
-The generated App Bundle can be found at:
-
-```text
-android/app/build/outputs/bundle/release/app-release.aab
-```
-
-Make sure your Android release signing configuration and keystore are correctly configured before generating a production release.
-
-## 🔒 Privacy
-
-GoodFood uses device location to discover nearby restaurants.
-
-Location information is used to retrieve relevant restaurant results. The application also communicates with Geoapify to retrieve place information.
-
-For more information about data handling, please refer to the application's Privacy Policy.
 
 ## 🗺️ Third-Party Services
 
