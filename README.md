@@ -1,97 +1,194 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 🍽️ GoodFood – Restaurant Finder
 
-# Getting Started
+**GoodFood** is an Android restaurant discovery application built with React Native. It helps users discover restaurants near their current location, explore restaurant information, filter by cuisine, and get directions using Google Maps.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+The application uses GPS-based location services and the Geoapify Places API to retrieve nearby restaurant information.
 
-## Step 1: Start Metro
+## ✨ Features
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+- **Discover Nearby Restaurants** – Find restaurants based on your current GPS location.
+- **Restaurant Details** – View restaurant names, addresses, cuisine types, and location information.
+- **Search Restaurants** – Search for restaurants by name.
+- **Cuisine Filters** – Filter restaurants by available cuisine categories.
+- **Google Maps Directions** – Open Google Maps to navigate to a selected restaurant.
+- **Location Services** – Use device location to discover nearby places.
+- **User-Friendly Interface** – Clean and intuitive interface designed for a smooth browsing experience.
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+## 🛠️ Technology Stack
 
-```sh
-# Using npm
+| Technology                       | Purpose                                     |
+| -------------------------------- | ------------------------------------------- |
+| React Native                     | Cross-platform mobile development framework |
+| TypeScript                       | Type-safe application development           |
+| React Navigation                 | Screen navigation                           |
+| Geoapify Places API              | Nearby restaurant discovery                 |
+| React Native Geolocation Service | GPS location access                         |
+| React Native Config              | Environment variable management             |
+| Google Maps                      | Restaurant directions                       |
+
+## 📁 Project Structure
+
+```text
+GoodFood/
+├── android/
+├── src/
+│   ├── components/
+│   │   ├── RestaurantCard.tsx
+│   │   ├── SearchBar.tsx
+│   │   └── CuisineFilter.tsx
+│   │
+│   ├── config/
+│   │   └── api.ts
+│   │
+│   ├── hooks/
+│   │   └── useLocation.ts
+│   │
+│   ├── navigation/
+│   │   └── AppNavigator.tsx
+│   │
+│   ├── screens/
+│   │   ├── HomeScreen.tsx
+│   │   └── RestaurantDetailsScreen.tsx
+│   │
+│   ├── services/
+│   │   └── geoapify.ts
+│   │
+│   └── types/
+│       └── restaurant.ts
+│
+├── .env.example
+├── .gitignore
+├── App.tsx
+├── package.json
+└── README.md
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+Make sure you have the following installed:
+
+- Node.js
+- npm
+- React Native development environment
+- Android Studio
+- Android SDK
+- JDK compatible with your React Native version
+- A Geoapify API key
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/YOUR_USERNAME/GoodFood.git
+```
+
+### 2. Navigate to the Project
+
+```bash
+cd GoodFood
+```
+
+### 3. Install Dependencies
+
+```bash
+npm install
+```
+
+### 4. Configure Environment Variables
+
+Create a `.env` file in the project root directory:
+
+```env
+GEOAPIFY_API_KEY=your_geoapify_api_key
+```
+
+You can obtain an API key from:
+
+[Geoapify](https://www.geoapify.com/)
+
+**Important:** Never commit your actual `.env` file or expose your API keys in a public repository.
+
+### 5. Start Metro
+
+```bash
 npm start
-
-# OR using Yarn
-yarn start
 ```
 
-## Step 2: Build and run your app
+### 6. Run the Android Application
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+Open another terminal and execute:
 
-### Android
-
-```sh
-# Using npm
+```bash
 npm run android
-
-# OR using Yarn
-yarn android
 ```
 
-### iOS
+Alternatively:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
-```sh
-bundle install
+```bash
+npx react-native run-android
 ```
 
-Then, and every time you update your native dependencies, run:
+## 📱 Android Permissions
 
-```sh
-bundle exec pod install
+The application requires location permissions to discover nearby restaurants.
+
+The following permissions are declared in the Android manifest:
+
+```xml
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+<uses-permission android:name="android.permission.INTERNET" />
 ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+Users must grant location permission and enable device location services for GPS-based restaurant discovery.
 
-```sh
-# Using npm
-npm run ios
+## 🔑 API Integration
 
-# OR using Yarn
-yarn ios
+GoodFood uses the **Geoapify Places API** to retrieve nearby restaurants.
+
+The application uses GPS coordinates to search for restaurants within a defined radius.
+
+API documentation:
+
+[Geoapify Places API Documentation](https://apidocs.geoapify.com/docs/places/)
+
+## 📦 Generate a Release Build
+
+To generate a signed Android App Bundle (`.aab`) for Google Play Console:
+
+```bash
+cd android
+./gradlew bundleRelease
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+The generated App Bundle can be found at:
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+```text
+android/app/build/outputs/bundle/release/app-release.aab
+```
 
-## Step 3: Modify your app
+Make sure your Android release signing configuration and keystore are correctly configured before generating a production release.
 
-Now that you have successfully run the app, let's make changes!
+## 🔒 Privacy
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+GoodFood uses device location to discover nearby restaurants.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+Location information is used to retrieve relevant restaurant results. The application also communicates with Geoapify to retrieve place information.
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+For more information about data handling, please refer to the application's Privacy Policy.
 
-## Congratulations! :tada:
+## 🗺️ Third-Party Services
 
-You've successfully run and modified your React Native App. :partying_face:
+- [Geoapify](https://www.geoapify.com/) – Location and Places API.
+- [Google Maps](https://www.google.com/maps) – Navigation and directions.
 
-### Now what?
+## 📄 License
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+This project is available under the MIT License.
 
-# Troubleshooting
+See the `LICENSE` file for details.
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+---
 
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+**GoodFood – Discover great food around you! 🍽️**
