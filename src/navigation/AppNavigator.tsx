@@ -1,0 +1,38 @@
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import HomeScreen from '../screens/HomeScreen';
+import RestaurantDetailsScreen from '../screens/RestaurantDetailsScreen';
+import { Restaurant } from '../types/restaurant';
+
+export type RootStackParamList = {
+  Home: undefined;
+  RestaurantDetails: {
+    restaurant: Restaurant;
+  };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+const AppNavigator = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Stack.Screen name="Home" component={HomeScreen} />
+
+        <Stack.Screen
+          name="RestaurantDetails"
+          component={RestaurantDetailsScreen}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export default AppNavigator;
