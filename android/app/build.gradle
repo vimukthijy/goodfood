@@ -78,9 +78,9 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.goodfood"
+    namespace "com.goodfood.lanka"
     defaultConfig {
-        applicationId "com.goodfood"
+        applicationId "com.goodfood.lanka"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

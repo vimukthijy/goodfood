@@ -1,4 +1,4 @@
-package com.goodfood
+package com.goodfood.lanka
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

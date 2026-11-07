@@ -1,4 +1,4 @@
-package com.goodfood
+package com.goodfood.lanka
 
 import android.app.Application
 import com.facebook.react.PackageList
